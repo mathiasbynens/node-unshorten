@@ -1,0 +1,26 @@
+{
+	"name": "unshorten",
+	"version": "0.0.1",
+	"description": "A simple URL unshortener.",
+	"homepage": "http://mths.be/unshorten",
+	"main": "unshorten",
+	"keywords": [
+		"url",
+		"unshorten",
+		"shorturl"
+	],
+	"author": {
+		"name": "Mathias Bynens",
+		"web": "http://mathiasbynens.be/"
+	},
+	"bugs": {
+		"url": "https://github.com/mathiasbynens/node-unshorten/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mathiasbynens/node-unshorten.git"
+	},
+	"engines": [
+		"node"
+	]
+}
