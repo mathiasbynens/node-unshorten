@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "A simple URL unshortener.",
 	"homepage": "http://mths.be/unshorten",
-	"main": "unshorten",
+	"main": "unshorten.js",
 	"keywords": [
 		"url",
 		"unshorten",

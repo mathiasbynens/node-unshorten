@@ -20,8 +20,7 @@
 					return;
 				}
 			}
-		);
-		request.end();
+		).end();
 	}
 
 	exports.expand = unshorten;
