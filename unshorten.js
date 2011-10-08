@@ -5,9 +5,8 @@
 	    https = require('https');
 
 	function unshorten(url, callback) {
-		var request;
 		url = urlLibrary.parse(url);
-		request = ('https' == url.protocol ? https : http).request(
+		('https' == url.protocol ? https : http).request(
 			{
 				'headers': 't.co' == url.host ? {} : { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.5 (KHTML, like Gecko) Chrome/16.0.894.0 Safari/535.5' },
 				'method': 'HEAD',
@@ -23,6 +22,6 @@
 		).end();
 	}
 
-	exports.expand = unshorten;
+	module.exports = unshorten;
 
 }());

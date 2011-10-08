@@ -6,7 +6,7 @@ A simple URL unshortener for [Node.js](http://nodejs.org/).
 
 ```js
 var unshorten = require('./unshorten.js');
-unshorten.expand('http://mths.be/unshorten', function(url) {
+unshorten('http://mths.be/unshorten', function(url) {
 	console.log(url + ' is where it’s at!');
 });
 ```
