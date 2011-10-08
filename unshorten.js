@@ -8,7 +8,6 @@
 		url = urlLibrary.parse(url);
 		('https' == url.protocol ? https : http).request(
 			{
-				'headers': 't.co' == url.host ? {} : { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.5 (KHTML, like Gecko) Chrome/16.0.894.0 Safari/535.5' },
 				'method': 'HEAD',
 				'host': url.host,
 				'path': url.pathname
