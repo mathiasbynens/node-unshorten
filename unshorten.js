@@ -1,24 +1,29 @@
 (function() {
 
-	var urlLibrary = require('url'),
+	var parseUrl = require('url').parse,
 	    http = require('http'),
 	    https = require('https');
 
 	function unshorten(url, callback) {
-		url = urlLibrary.parse(url);
-		('https' == url.protocol ? https : http).request(
-			{
-				'method': 'HEAD',
-				'host': url.host,
-				'path': url.pathname
-			},
-			function(response) {
-				if (~[301, 302].indexOf(response.statusCode)) {
-					(callback || console.log)(response.headers.location);
-					return;
+		var urlParts = parseUrl(url),
+		    protocol = urlParts.protocol,
+		    host = urlParts.host,
+		    path = urlParts.pathname;
+		if (protocol && host && path) {
+			('https:' == protocol ? https : http).request(
+				{
+					'method': 'HEAD',
+					'host': host,
+					'path': path
+				},
+				function(response) {
+					(callback || console.log)(response.headers.location || url);
 				}
-			}
-		).end();
+			).end();
+		} else {
+			console.error('Not a valid URL: ' + url);
+			(callback || console.log)(url);
+		}
 	}
 
 	module.exports = unshorten;
