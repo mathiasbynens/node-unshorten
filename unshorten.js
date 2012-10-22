@@ -37,7 +37,7 @@ module.exports = (function() {
 
         callUrl(url, checkUrl);
       } else {
-        if(trace) console.log('url\t: ' + url + '\t ms: ' + (+new Date() - ms));
+        if(trace) console.log('url\t: ' + url + '\t ms: ' + (new Date() - ms));
 
         (callback || console.log)(url);
       }
