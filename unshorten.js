@@ -3,7 +3,7 @@ module.exports = (function() {
       http = require('http'),
       https = require('https');
 
-  var shortedUrlPattern = /(http|https):\/\/([a-z0-9-]+((\.[a-z0-9-]+)+)?)(:[0-9]+)?(\/([a-zA-Z0-9]{6,32}))$/;
+  var shortedUrlPattern = /(http|https):\/\/([a-z0-9-]+((\.[a-z0-9-]+)+)?)(:[0-9]+)?(\/([a-zA-Z0-9]{1,4}))?(\/([a-zA-Z0-9]{5,32}))$/;
 
   function callUrl(url, callback) {
     var urlParts = parseUrl(url),
