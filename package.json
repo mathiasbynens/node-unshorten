@@ -11,7 +11,7 @@
 	],
 	"author": {
 		"name": "Mathias Bynens",
-		"web": "http://mathiasbynens.be/"
+		"url": "http://mathiasbynens.be/"
 	},
 	"bugs": {
 		"url": "https://github.com/mathiasbynens/node-unshorten/issues"
