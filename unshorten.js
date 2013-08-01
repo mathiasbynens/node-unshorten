@@ -19,7 +19,14 @@
 				function(response) {
 					(callback || console.log)(response.headers.location || url);
 				}
-			).end();
+			).on( 'error', function( err ) {
+				if( 'getaddrinfo ENOTFOUND' === err.message ) {
+					console.log(url +' cannot be resolved.');
+				}
+				else {
+					console.log(err.stack);
+				}
+			}).end();
 		} else {
 			console.error('Not a valid URL: ' + url);
 			(callback || console.log)(url);
