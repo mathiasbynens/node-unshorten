@@ -14,7 +14,8 @@
 				{
 					'method': 'HEAD',
 					'host': host,
-					'path': path
+					'path': path,
+					'agent': false
 				},
 				function(response) {
 					(callback || console.log)(response.headers.location || url);
