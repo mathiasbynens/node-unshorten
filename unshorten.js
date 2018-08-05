@@ -1,31 +1,32 @@
-(function() {
+{
+	const parseUrl = require('url').parse,
+		    http = require('http'),
+		    https = require('https');
 
-	var parseUrl = require('url').parse,
-	    http = require('http'),
-	    https = require('https');
+	module.exports = (url, callback = null) => {
+		const { protocol, host, path } = parseUrl(url);
 
-	function unshorten(url, callback) {
-		var urlParts = parseUrl(url),
-		    protocol = urlParts.protocol,
-		    host = urlParts.host,
-		    path = urlParts.pathname;
 		if (protocol && host && path) {
-			('https:' == protocol ? https : http).request(
+			(protocol === 'https:' ? https : http).request(
 				{
-					'method': 'HEAD',
-					'host': host,
-					'path': path
+					method: 'HEAD',
+					agent: false,
+					host,
+					path,
 				},
-				function(response) {
+				response => {
 					(callback || console.log)(response.headers.location || url);
 				}
-			).end();
+			).on('error', error => {
+				console.error(
+					error.message === 'getaddrinfo ENOTFOUND'
+						? `URL cannot be resolved: ${ url }`
+						: error.stack
+				);
+			}).end();
 		} else {
-			console.error('Not a valid URL: ' + url);
+			console.error(`URL invalid or malformed: ${ url }`);
 			(callback || console.log)(url);
 		}
 	}
-
-	module.exports = unshorten;
-
-}());
+}
